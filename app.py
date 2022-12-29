@@ -37,6 +37,8 @@ def complete(text, max_tokens, temperature, stop_sequences, from_lang="", to_lan
 
     st.session_state.complete = ""
     st.session_state.text_error = ""
+    # st.session_state.visibility = ""
+    # st.session_state.n_requests = 0
 
     if not text:
         st.session_state.text_error = "Please enter a text to complete."
@@ -71,7 +73,6 @@ def complete(text, max_tokens, temperature, stop_sequences, from_lang="", to_lan
             )
 
 
-
 # Configure Streamlit page and state
 st.set_page_config(page_title="Co-Complete", page_icon="🍩")
 
@@ -89,13 +90,15 @@ if "visibility" not in st.session_state:
 
 # Force responsive layout for columns also on mobile
 st.write(
-    """<style>
+    """
+    <style>
     [data-testid="column"] {
         width: calc(50% - 1rem);
         flex: 1 1 calc(50% - 1rem);
         min-width: calc(50% - 1rem);
     }
-    </style>""",
+    </style>
+    """,
     unsafe_allow_html=True,
 )
 
@@ -103,9 +106,11 @@ st.write(
 # Render Streamlit page
 st.title("Complete Text")
 
+
 st.markdown(
     "This mini-app completes Sentences using Cohere's based [Model](https://docs.cohere.ai/) for texts."
 )
+
 
 st.markdown(
     "You can find the code on [GitHub](https://github.com/abdibrokhim/CoComplete) and the author on [Twitter](https://twitter.com/abdibrokhim)."
@@ -114,42 +119,47 @@ st.markdown(
 # text
 text = st.text_area(label="Enter text", placeholder="Example: I want to play")
 
+
 # max tokens
 max_tokens = st.slider('Pick max tokens', 0, 1024)
+
 
 # temperature
 temperature = st.slider('Pick a temperature', 0.0, 1.0)
 
+
 # stop sequences
 stop_sequences = st.text_input(label="Enter stop sequences", placeholder="Example: --")
 
-# # from to selector
-# col1, col2 = st.columns(2)
 
-# # from " " language
-# with col1:
-#     from_lang = st.selectbox(
-#         "From language",
-#         ([i for i in SUPPORTED_LANGUAGES]),
-#         label_visibility=st.session_state.visibility,
-#     )
+# from to selector
+col1, col2 = st.columns(2)
 
-# # to " " language
-# with col2:
-#     to_lang = st.selectbox(
-#         "To language",
-#         ([i for i in SUPPORTED_LANGUAGES]),
-#         label_visibility=st.session_state.visibility,
-#     )
+# from " " language
+with col1:
+    from_lang = st.selectbox(
+        "From language",
+        ([i for i in SUPPORTED_LANGUAGES]),
+        label_visibility=st.session_state.visibility,
+    )
 
+# to " " language
+with col2:
+    to_lang = st.selectbox(
+        "To language",
+        ([i for i in SUPPORTED_LANGUAGES]),
+        label_visibility=st.session_state.visibility,
+    )
 
+# complete button
 st.button(
     label="Complete",
-    key="complete",
+    key="generate",
     help="Press to Complete text", 
     type="primary", 
     on_click=complete,
-    args=(text, max_tokens, temperature, stop_sequences, "from_lang", "to_lang"),)
+    args=(text, max_tokens, temperature, stop_sequences, from_lang, to_lang),
+    )
 
 
 text_spinner_placeholder = st.empty()
