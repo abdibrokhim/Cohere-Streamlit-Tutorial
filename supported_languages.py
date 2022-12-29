@@ -137,4 +137,4 @@ SUPPORTED_LANGUAGES = {
 
 # Usage:
 
-print(SUPPORTED_LANGUAGES['uyghur'])
+# print(SUPPORTED_LANGUAGES['uyghur'])
