@@ -35,13 +35,13 @@ class Translator:
             return t
 
         except Exception as e:
-            logging.error(f"Cohere API error: {e}")
-            st.session_state.text_error = f"Cohere API error: {e}"
+            logging.error(f"Google Translator API error: {e}")
+            st.session_state.text_error = f"Google Translator API error: {e}"
             print("Error:", e)
         
 
 # Usage:
 
-translator = Translator()
-a = translator.translate("Ko'chada ketayotgan yolg'iz chol", 'ru')
-print(a)
+# translator = Translator()
+# a = translator.translate("Ko'chada ketayotgan yolg'iz chol", 'ko')
+# print(a)
