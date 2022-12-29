@@ -1,6 +1,6 @@
 """
 
-Streamlit app to complete text using Cohere.
+This module contains the completion class.
 
 """
 
@@ -8,6 +8,7 @@ Streamlit app to complete text using Cohere.
 import os
 import logging
 from dotenv import load_dotenv
+
 
 # Import from 3rd party libraries
 import cohere
@@ -33,6 +34,7 @@ class Completion:
 
     @staticmethod
     def complete(prompt, max_tokens, temperature, stop_sequences):
+      
         """
         Call Cohere Completion with text prompt.
         Args:
@@ -42,6 +44,7 @@ class Completion:
             stop_sequences: list of sequences to stop generation
         Return: predicted response text
         """
+       
         try:
             response = co.generate(  
                 model = 'xlarge',

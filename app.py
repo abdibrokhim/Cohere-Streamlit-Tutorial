@@ -7,12 +7,15 @@ Streamlit app to complete text using Cohere.
 # Import from standard library
 import logging
 
+
 # Import from 3rd party libraries
 import streamlit as st
 import streamlit.components.v1 as components
 
+
 # Import modules
 from completion import Completion
+
 
 # Configure logger
 logging.basicConfig(format="\n%(asctime)s\n%(message)s", level=logging.INFO, force=True)
