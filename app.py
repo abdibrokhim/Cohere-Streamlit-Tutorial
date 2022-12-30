@@ -116,6 +116,10 @@ st.markdown(
     "You can find the code on [GitHub](https://github.com/abdibrokhim/CoComplete) and the author on [Twitter](https://twitter.com/abdibrokhim)."
 )
 
+st.markdown(
+    "Read step by step development on [Medium](https://medium.com/@abdibrokhim/make-your-1st-streamlit-app-with-coheres-large-language-models-a96f63e2d920)."
+)
+
 # text
 text = st.text_area(label="Enter text", placeholder="Example: I want to play")
 
