@@ -108,7 +108,7 @@ st.title("Complete Text")
 
 
 st.markdown(
-    "This mini-app completes Sentences using Cohere's based [Model](https://docs.cohere.ai/) for texts."
+    "This mini-app completes, summarizes and etc. using Cohere's based [Model](https://docs.cohere.ai/) for texts."
 )
 
 
